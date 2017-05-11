@@ -8,7 +8,11 @@
                     <div class="panel-body">
                         I'm an example component!
                     </div>
+                    <testing
+                        v-bind:testing-props=counter></testing>
                 </div>
+                <button @click="increase">Increase</button>
+                <button @click="decrease">Decrease</button>
             </div>
         </div>
     </div>
@@ -16,8 +20,24 @@
 
 <script>
     export default {
+        components: {
+            testing: require('./Testing.vue')
+        },
         mounted() {
             console.log('Component mounted.')
+        },
+        data: function () {
+            return {
+                counter: 1
+            }
+        },
+        methods: {
+            increase: function() {
+                this.counter++
+            },
+            decrease: function() {
+                this.counter--
+            }
         }
     }
 </script>
